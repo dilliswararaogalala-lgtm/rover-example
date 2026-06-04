@@ -7,6 +7,7 @@ import com.tw.step.rover.position.Navigator;
 
 public class Rover {
     private final String id;
+    private String state;
     private RoverState roverState;
     private Coordinate coordinate;
     private Direction heading;
@@ -16,6 +17,7 @@ public class Rover {
         this.coordinate = coordinate;
         this.heading = heading;
         this.roverState = new LiveRoverState(this);
+        this.state = "ACTIVE";
     }
 
     public Rover(Coordinate coordinate, Direction heading) {
@@ -54,8 +56,12 @@ public class Rover {
         return boundary.isWithin(this.coordinate);
     }
 
+    void setState() {
+        this.state = "LOST";
+    }
+
     @Override
     public String toString() {
-        return coordinate.toString() + " " + heading.toString();
+        return coordinate.toString() + " " + heading.toString() + " " + state;
     }
 }

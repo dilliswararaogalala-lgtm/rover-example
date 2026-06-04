@@ -29,7 +29,7 @@ public class Coordinate {
     }
 
     public boolean isWithin(Coordinate bottomLeft, Coordinate topRight) {
-        return bottomLeft.x <= this.x && this.x <= topRight.x && bottomLeft.y <= this.y && this.y <= topRight.y;
+        return this.x >= bottomLeft.x && this.x <= topRight.x && this.y >= bottomLeft.y && this.y <= topRight.y;
     }
 
     public Coordinate add(Coordinate other) {
